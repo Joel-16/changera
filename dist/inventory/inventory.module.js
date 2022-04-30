@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const inventory_service_1 = require("./inventory.service");
 const inventory_controller_1 = require("./inventory.controller");
 const microservices_1 = require("@nestjs/microservices");
+const conn = process.env.CLOUDAMQP_URL || 'amqp://localhost:5672';
 let InventoryModule = class InventoryModule {
 };
 InventoryModule = __decorate([
@@ -21,7 +22,7 @@ InventoryModule = __decorate([
                     name: 'INVENTORY',
                     transport: microservices_1.Transport.RMQ,
                     options: {
-                        urls: ['amqp://localhost:5672'],
+                        urls: [conn],
                         queue: 'inventory',
                         queueOptions: {
                             durable: false

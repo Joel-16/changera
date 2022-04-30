@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { FoodService } from './food.service';
 import { FoodController } from './food.controller';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+const conn = process.env.CLOUDAMQP_URL || 'amqp://localhost:5672'
 
 @Module({
   imports :[ 
@@ -10,7 +11,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
       name : 'FOOD',
       transport : Transport.RMQ,
       options: {
-        urls: ['amqp://localhost:5672'],
+        urls: [conn],
         queue: 'food',
         queueOptions: {
           durable: false

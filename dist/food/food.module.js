@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const food_service_1 = require("./food.service");
 const food_controller_1 = require("./food.controller");
 const microservices_1 = require("@nestjs/microservices");
+const conn = process.env.CLOUDAMQP_URL || 'amqp://localhost:5672';
 let FoodModule = class FoodModule {
 };
 FoodModule = __decorate([
@@ -21,7 +22,7 @@ FoodModule = __decorate([
                     name: 'FOOD',
                     transport: microservices_1.Transport.RMQ,
                     options: {
-                        urls: ['amqp://localhost:5672'],
+                        urls: [conn],
                         queue: 'food',
                         queueOptions: {
                             durable: false
