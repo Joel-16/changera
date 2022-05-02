@@ -21,8 +21,7 @@ let FoodService = class FoodService {
     }
     async create(createFoodDto) {
         let result = this.mainClient.emit('create-order', createFoodDto);
-        console.log(result);
-        return result;
+        return 'success';
     }
     findAll(email) {
         let result = this.mainClient.emit('get-all-orders', email);

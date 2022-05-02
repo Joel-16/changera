@@ -10,8 +10,7 @@ export class FoodService {
   
   async create(createFoodDto) {
     let result = this.mainClient.emit('create-order', createFoodDto)
-    console.log(result)
-    return result
+    return 'success'
   }
 
   findAll(email) {
