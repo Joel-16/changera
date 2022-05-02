@@ -9,10 +9,7 @@ export class FoodService {
   ){}
   
   async create(createFoodDto) {
-    let a = ''
-    let result = this.mainClient.emit('create-order', createFoodDto).subscribe(x=>{
-      console.log(x)
-    })
+    let result = this.mainClient.emit('create-order', createFoodDto)
     console.log(result)
     return result
   }
