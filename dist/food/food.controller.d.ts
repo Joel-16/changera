@@ -1,11 +1,10 @@
 import { FoodService } from './food.service';
-import { UpdateFoodDto } from './dto/update-food.dto';
+import { CreateFoodDto } from './dto/create-food.dto';
 export declare class FoodController {
     private readonly foodService;
     constructor(foodService: FoodService);
-    create(createFoodDto: any): string;
-    findAll(): string;
-    findOne(id: string): string;
-    update(id: string, updateFoodDto: UpdateFoodDto): string;
-    remove(id: string): string;
+    create(createFoodDto: CreateFoodDto): Promise<import("rxjs").Subscription>;
+    findAll(email: string): import("rxjs").Observable<any>;
+    findOne(id: string): import("rxjs").Observable<any>;
+    remove(id: string): import("rxjs").Observable<any>;
 }

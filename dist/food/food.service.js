@@ -19,26 +19,30 @@ let FoodService = class FoodService {
     constructor(mainClient) {
         this.mainClient = mainClient;
     }
-    create(createFoodDto) {
-        this.mainClient.emit('order', createFoodDto);
-        return 'Hello World!';
+    async create(createFoodDto) {
+        let a = '';
+        let result = this.mainClient.emit('create-order', createFoodDto).subscribe(x => {
+            console.log(x);
+        });
+        console.log(result);
+        return result;
     }
-    findAll() {
-        return `This action returns all food`;
+    findAll(email) {
+        let result = this.mainClient.emit('get-all-orders', email);
+        return result;
     }
     findOne(id) {
-        return `This action returns a #${id} food`;
-    }
-    update(id, updateFoodDto) {
-        return `This action updates a #${id} food`;
+        let result = this.mainClient.emit('get-one-order', id);
+        return result;
     }
     remove(id) {
-        return `This action removes a #${id} food`;
+        let result = this.mainClient.emit('delete-order', id);
+        return result;
     }
 };
 FoodService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, common_1.Inject)('FOOD')),
+    __param(0, (0, common_1.Inject)('ORDER')),
     __metadata("design:paramtypes", [microservices_1.ClientProxy])
 ], FoodService);
 exports.FoodService = FoodService;

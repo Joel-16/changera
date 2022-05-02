@@ -8,11 +8,11 @@ const conn = process.env.CLOUDAMQP_URL || 'amqp://localhost:5672'
   imports :[ 
     ClientsModule.register([
     {
-      name : 'FOOD',
+      name : 'ORDER',
       transport : Transport.RMQ,
       options: {
         urls: [conn],
-        queue: 'food',
+        queue: 'order',
         queueOptions: {
           durable: false
         },

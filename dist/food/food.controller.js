@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.FoodController = void 0;
 const common_1 = require("@nestjs/common");
 const food_service_1 = require("./food.service");
-const update_food_dto_1 = require("./dto/update-food.dto");
+const create_food_dto_1 = require("./dto/create-food.dto");
 let FoodController = class FoodController {
     constructor(foodService) {
         this.foodService = foodService;
@@ -23,14 +23,11 @@ let FoodController = class FoodController {
     create(createFoodDto) {
         return this.foodService.create(createFoodDto);
     }
-    findAll() {
-        return this.foodService.findAll();
+    findAll(email) {
+        return this.foodService.findAll(email);
     }
     findOne(id) {
         return this.foodService.findOne(+id);
-    }
-    update(id, updateFoodDto) {
-        return this.foodService.update(+id, updateFoodDto);
     }
     remove(id) {
         return this.foodService.remove(+id);
@@ -40,13 +37,14 @@ __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [create_food_dto_1.CreateFoodDto]),
     __metadata("design:returntype", void 0)
 ], FoodController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
+    __param(0, (0, common_1.Query)('email')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], FoodController.prototype, "findAll", null);
 __decorate([
@@ -57,14 +55,6 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], FoodController.prototype, "findOne", null);
 __decorate([
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_food_dto_1.UpdateFoodDto]),
-    __metadata("design:returntype", void 0)
-], FoodController.prototype, "update", null);
-__decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -72,7 +62,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], FoodController.prototype, "remove", null);
 FoodController = __decorate([
-    (0, common_1.Controller)('food'),
+    (0, common_1.Controller)('order'),
     __metadata("design:paramtypes", [food_service_1.FoodService])
 ], FoodController);
 exports.FoodController = FoodController;

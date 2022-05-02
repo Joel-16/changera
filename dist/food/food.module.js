@@ -19,11 +19,11 @@ FoodModule = __decorate([
         imports: [
             microservices_1.ClientsModule.register([
                 {
-                    name: 'FOOD',
+                    name: 'ORDER',
                     transport: microservices_1.Transport.RMQ,
                     options: {
                         urls: [conn],
-                        queue: 'food',
+                        queue: 'order',
                         queueOptions: {
                             durable: false
                         },
