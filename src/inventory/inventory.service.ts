@@ -9,26 +9,26 @@ export class InventoryService {
     @Inject('INVENTORY') private readonly mainClient : ClientProxy,
   ){}
   create(createInventoryDto) {
-    return this.mainClient.emit(
+    this.mainClient.emit(
       'inventory',
       createInventoryDto
     )
-
+    return {message : "Successful communication with the inventory microservice"}
   }
 
   findAll() {
-    return `This action returns all inventory`;
+    return {message : "Successful communication with the inventory microservice"}
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} inventory`;
+    return {message : "Successful communication with the inventory microservice"}
   }
 
   update(id: number, updateInventoryDto: UpdateInventoryDto) {
-    return `This action updates a #${id} inventory`;
+    return {message : "Successful communication with the inventory microservice"}
   }
 
   remove(id: number) {
-    return `This action removes a #${id} inventory`;
+    return {message : "Successful communication with the inventory microservice"}
   }
 }

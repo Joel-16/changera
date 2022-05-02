@@ -10,21 +10,21 @@ export class FoodService {
   
   async create(createFoodDto) {
     let result = this.mainClient.emit('create-order', createFoodDto)
-    return 'success'
+    return {message : "Successful communication with the ordering microservice"}
   }
 
   findAll(email) {
     let result = this.mainClient.emit('get-all-orders',email)
-    return result;
+    return {message : "Successful communication with the ordering microservice"}
   }
 
   findOne(id: number) {
     let result = this.mainClient.emit('get-one-order',id)
-    return result;
+    return {message : "Successful communication with the ordering microservice"}
   }
 
   remove(id: number) {
     let result = this.mainClient.emit('delete-order',id)
-    return result;
+    return {message : "Successful communication with the ordering microservice"}
   }
 }
